@@ -1,17 +1,40 @@
 // node server which will handle socket io
 // const io = require('socket.io')(8000);
+// const { createServer } = require("http");
+
+
+// const { Server } = require("socket.io");
+
+// const httpServer = createServer();
+// const io = new Server(httpServer, {
+//   cors: {
+//     origin: "*",   // allow your frontend to connect
+//   },
+// });
+
+// httpServer.listen(8000, () => {
+//   console.log("Server running on port 8000");
+// });
+
+
 const { createServer } = require("http");
 const { Server } = require("socket.io");
 
+const PORT = process.env.PORT || 8000;
+
+// create HTTP server
 const httpServer = createServer();
+
+// create socket.io server
 const io = new Server(httpServer, {
   cors: {
-    origin: "*",   // allow your frontend to connect
+    origin: "*", // allow frontend
   },
 });
 
-httpServer.listen(8000, () => {
-  console.log("Server running on port 8000");
+// start server
+httpServer.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
 
 
