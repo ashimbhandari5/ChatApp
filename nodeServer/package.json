@@ -2,9 +2,9 @@
   "name": "nodeserver",
   "version": "1.0.0",
   "description": "This is a node server for our chat applictaion",
-  "main": "nodeServer/index.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node nodeServer/index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ashim",
   "license": "ISC",
