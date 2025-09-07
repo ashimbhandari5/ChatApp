@@ -2,7 +2,7 @@
   "name": "nodeserver",
   "version": "1.0.0",
   "description": "This is a node server for our chat applictaion",
-  "main": "index.js",
+  "main": "nodeServer/index.js",
   "scripts": {
     "start": "node nodeServer/index.js"
   },
