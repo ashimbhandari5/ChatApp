@@ -17,26 +17,56 @@
 // });
 
 
+// const { createServer } = require("http");
+// const { Server } = require("socket.io");
+
+// const PORT = process.env.PORT || 8000;
+
+// // create HTTP server
+// const httpServer = createServer();
+
+// // create socket.io server
+// const io = new Server(httpServer, {
+//   cors: {
+//     origin: "*", // allow frontend
+//   },
+// });
+
+// // start server
+// httpServer.listen(PORT, () => {
+//   console.log(`Server running on port ${PORT}`);
+// });
+
+
+
+
+
+
 const { createServer } = require("http");
 const { Server } = require("socket.io");
 
 const PORT = process.env.PORT || 8000;
 
-// create HTTP server
-const httpServer = createServer();
+// Simple HTTP handler for Render health check
+const handler = (req, res) => {
+  res.writeHead(200, { "Content-Type": "text/plain" });
+  res.end("Server is running with Socket.IO ✅");
+};
 
-// create socket.io server
+// Create HTTP server with handler
+const httpServer = createServer(handler);
+
+// Create Socket.IO server
 const io = new Server(httpServer, {
   cors: {
-    origin: "*", // allow frontend
+    origin: "*", // allow frontend (Vercel domain)
   },
 });
 
-// start server
+// Start server
 httpServer.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
 
 const users = {};
 io.on('connection', socket => {
